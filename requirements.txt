@@ -1,0 +1,34 @@
+# Core DL framework
+torch==2.2.0
+torchvision==0.17.0
+torchaudio==2.2.0
+
+# Data & utilities
+pandas
+numpy
+scipy
+joblib
+tqdm
+python-box==6.0.2
+pyYAML
+types-PyYAML
+ensure==1.0.2
+
+# Visualization
+matplotlib
+seaborn
+
+# Experiment tracking / pipelines
+mlflow==2.2.2
+dvc
+gdown
+
+# Web frameworks (backend for deployment)
+Flask
+Flask-Cors
+
+# Jupyter
+notebook
+
+# Local package installation
+-e .
