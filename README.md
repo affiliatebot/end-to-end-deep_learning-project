@@ -15,4 +15,9 @@ conda create -n deeplearning python=3.10
 
 conda activate deeplearning
 
+# install requirements.txt:
+
+pip install -r requirements.txt 
+
+
 
