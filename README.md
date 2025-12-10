@@ -1,6 +1,17 @@
 # end-to-end-deep_learning-project
 the project is end to end implemented as per industry level with mlflow , dvc , fastapi , pytorch etc
 
+# To clone a repository:
+
+1. Open a terminal (or Git Bash on Windows).
+2. Run the command: git clone <repository-url>
+3. Replace <repository-url> with the URL of the Git repository you wish to clone. This URL can be found on the      repository's page on GitHub or any Git hosting service.
+
+# create project structure :
+
+1. write template.py
+2. python template.py (in git bash)
+
 # git bash commands to push changes:
 
 git add .
