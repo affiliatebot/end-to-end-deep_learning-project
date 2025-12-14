@@ -1,12 +1,13 @@
 artifacts_root: artifacts
 
-
+# to get source_URL right_click->share->copy link
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: "https://drive.google.com/file/d/1AZr33Qtu5EMI9U825iZP2VK4Tc3f-DeH/view?usp=sharing"
+  source_URL: "https://drive.google.com/file/d/1J1azcjs4w9LSuP1tcq8z_bmhoEpVhZyf/view?usp=sharing"
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
-
+  
+  
 
 prepare_base_model:
   root_dir: artifacts/prepare_base_model
@@ -17,3 +18,6 @@ prepare_base_model:
 training:
   root_dir: artifacts/training
   trained_model_path: artifacts/training/model.pt
+  train_data: artifacts/data_ingestion/train
+  test_data: artifacts/data_ingestion/test
+
