@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Classification</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 420px;
+            padding: 24px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .upload-box {
+            border: 2px dashed #cfd8dc;
+            padding: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+
+        .upload-box:hover {
+            background: #f9fbfc;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 12px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 14px;
+        }
+
+        button:hover {
+            background: #1565c0;
+        }
+
+        .result {
+            margin-top: 18px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2e7d32;
+            display: none;
+        }
+
+        .loading {
+            margin-top: 12px;
+            color: #555;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Image Prediction</h2>
+
+    <label class="upload-box">
+        Click to upload image
+        <input type="file" id="imageInput" accept="image/*" />
+    </label>
+
+    <img id="preview" />
+
+    <button onclick="submitImage()">Predict</button>
+
+    <div class="loading" id="loading">Predicting...</div>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    const imageInput = document.getElementById("imageInput");
+    const preview = document.getElementById("preview");
+    const resultDiv = document.getElementById("result");
+    const loadingDiv = document.getElementById("loading");
+
+    imageInput.addEventListener("change", () => {
+        const file = imageInput.files[0];
+        if (!file) return;
+
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+        resultDiv.style.display = "none";
+    });
+
+    async function submitImage() {
+        const file = imageInput.files[0];
+        if (!file) {
+            alert("Please upload an image first.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        loadingDiv.style.display = "block";
+        resultDiv.style.display = "none";
+
+        const response = await fetch("/predict", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        loadingDiv.style.display = "none";
+        resultDiv.innerText = `Prediction: ${data.prediction}`;
+        resultDiv.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
+
