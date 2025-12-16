@@ -42,5 +42,9 @@ pip install -r requirements.txt
 8. update the main.py
 9. update the dvc.yaml
 
+# to run dvc 
+1. open git bash 
+2. dvc repro
+
 
 
